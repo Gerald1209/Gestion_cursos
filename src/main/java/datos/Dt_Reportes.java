@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import entidades.Rpt_Certificadas;
 
 public class Dt_Reportes {
-	poolConexion pc = poolConexion.getInstance();
+	PoolConexion pc = PoolConexion.getInstance();
 	Connection c = null;
 	private ResultSet rs = null;
 	private PreparedStatement ps = null;
@@ -16,7 +16,7 @@ public class Dt_Reportes {
 	public ArrayList<Rpt_Certificadas> reporteCertificados(Rpt_Certificadas rpt){
 		ArrayList<Rpt_Certificadas> listRpt = new ArrayList<Rpt_Certificadas>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("Select * from gc_mcgofe.rpt_certf where ("
 					+ " ano_inscripcion='"+rpt.getAno_inscripcion()+"' "
 					+ "AND sexo="+rpt.getSexo()
@@ -57,7 +57,7 @@ public class Dt_Reportes {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

@@ -11,7 +11,7 @@ import entidades.Opcion;
 
 public class Dt_opcion {
 
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsOpcion = null;
 	private ResultSet rs = null;
@@ -32,7 +32,7 @@ public class Dt_opcion {
 	public ArrayList<Opcion> listaopActivos(){
 		ArrayList<Opcion> listop = new ArrayList<Opcion>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.opciones WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -57,7 +57,7 @@ public class Dt_opcion {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class Dt_opcion {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsOpcion(c);
 			this.rsOpcion.moveToInsertRow();
 			rsOpcion.updateString("nombre_opcion", tur.getNombre_opcion());
@@ -93,7 +93,7 @@ public class Dt_opcion {
 					rsOpcion.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

@@ -154,6 +154,7 @@
                                 <div class="x_content">
                                     <form class="" action="../Sl_Capacitacion" method="post" novalidate>
                                     <input type="hidden" value="1" name="opcion" id="opcion"/>
+                                    <input type="hidden" value="2" name="opcion" id="opcion"/>
 <!--                                         <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a> -->
 <!--                                         </p> -->
 <!--                                         <span class="section">Personal Info</span> -->
@@ -178,7 +179,7 @@
 													
 													<% for(Modalidad vc: listaCap){ %>
 														
-													<option value="<%=vc.getId_modalidad()%>"><%=vc.getNombre_modalidad() %></option>
+														<option value="<%=vc.getId_modalidad()%>"><%=vc.getNombre_modalidad() %></option>
 													<%} %>
 												</select>
                                             </div>

@@ -10,7 +10,7 @@ import entidades.Vw_Capacitacion;
 
 public class Dt_capacitacion {
 
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsCarrera = null;
 	private ResultSet rs = null;
@@ -31,7 +31,7 @@ public class Dt_capacitacion {
 	public ArrayList<Vw_Capacitacion> listaCapActivos(){
 		ArrayList<Vw_Capacitacion> listCar = new ArrayList<Vw_Capacitacion>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_capacitacion WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -56,7 +56,7 @@ public class Dt_capacitacion {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class Dt_capacitacion {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsCapacitacion(c);
 			this.rsCarrera.moveToInsertRow();
 			rsCarrera.updateString("nombre", ca.getNombre());
@@ -92,7 +92,7 @@ public class Dt_capacitacion {
 					rsCarrera.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

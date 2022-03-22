@@ -11,7 +11,7 @@ import entidades.Oferta;
 import entidades.Oferta_Detalle;
 
 public class Dt_Oferta_Det {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsOferta = null;
 	private ResultSet rs = null;
@@ -32,7 +32,7 @@ public class Dt_Oferta_Det {
 	public ArrayList<Oferta_Detalle> listaOD_id(int id){
 		ArrayList<Oferta_Detalle> listFac = new ArrayList<Oferta_Detalle>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_oferta_det WHERE id_oferta = "+ id, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -65,7 +65,7 @@ public class Dt_Oferta_Det {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -81,7 +81,7 @@ public class Dt_Oferta_Det {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsOFerta_Det(c);
 			this.rsOferta.moveToInsertRow();
 			
@@ -109,7 +109,7 @@ public class Dt_Oferta_Det {
 					rsOferta.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -124,7 +124,7 @@ public class Dt_Oferta_Det {
 	public ArrayList<Oferta_Detalle> listaODActivos(){
 		ArrayList<Oferta_Detalle> listFac = new ArrayList<Oferta_Detalle>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_oferta_det;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -158,7 +158,7 @@ public class Dt_Oferta_Det {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

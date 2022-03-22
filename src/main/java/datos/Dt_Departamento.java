@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import entidades.Departamento;
 
 public class Dt_Departamento {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsDepartamento = null;
 	private ResultSet rs = null;
@@ -30,7 +30,7 @@ public class Dt_Departamento {
 	public ArrayList<Departamento> listaDepActivos(){
 		ArrayList<Departamento> listDep = new ArrayList<Departamento>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_departamento;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -58,7 +58,7 @@ public class Dt_Departamento {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -74,7 +74,7 @@ public class Dt_Departamento {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llenar_rsDepartamento(c);
 			this.rsDepartamento.moveToInsertRow();
 			rsDepartamento.updateString("nombre_departamento", Dep.getNombre_departamento());
@@ -95,7 +95,7 @@ public class Dt_Departamento {
 					rsDepartamento.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

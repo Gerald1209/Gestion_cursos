@@ -11,7 +11,7 @@ import entidades.UserRol;
 public class Dt_userrol {
 	
 	//Atributos
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsUserRol = null;
 	private ResultSet rs = null;
@@ -33,7 +33,7 @@ public class Dt_userrol {
 		public ArrayList<Vw_userrol> listarUserRol(){
 		ArrayList<Vw_userrol> listUserRol = new ArrayList<Vw_userrol>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_userrol;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -58,7 +58,7 @@ public class Dt_userrol {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -76,7 +76,7 @@ public class Dt_userrol {
 			boolean guardado = false;
 			
 			try{
-				c = poolConexion.getConnection();
+				c = PoolConexion.getConnection();
 				this.llena_rsUserRol(c);
 				this.rsUserRol.moveToInsertRow();
 				rsUserRol.updateInt("id_usuario", tur.getId_user());
@@ -95,7 +95,7 @@ public class Dt_userrol {
 						rsUserRol.close();
 					}
 					if(c != null){
-						poolConexion.closeConnection(c);
+						PoolConexion.closeConnection(c);
 					}
 					
 				} catch (SQLException e) {

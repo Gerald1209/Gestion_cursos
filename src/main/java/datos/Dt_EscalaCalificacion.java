@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import entidades.EscalaCalificacion;
 
 public class Dt_EscalaCalificacion {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsEscalaCal = null;
 	private ResultSet rs = null;
@@ -32,7 +32,7 @@ public class Dt_EscalaCalificacion {
 		public ArrayList<EscalaCalificacion> listaEscActivos(){
 			ArrayList<EscalaCalificacion> listEsc = new ArrayList<EscalaCalificacion>();
 			try{
-				c = poolConexion.getConnection(); //obtenemos una conexion del pool
+				c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 				ps = c.prepareStatement("SELECT * FROM gc_mcgofe.escalacalificacion WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				rs = ps.executeQuery();
 				while(rs.next()){
@@ -57,7 +57,7 @@ public class Dt_EscalaCalificacion {
 						ps.close();
 					}
 					if(c != null){
-						poolConexion.closeConnection(c);
+						PoolConexion.closeConnection(c);
 					}
 					
 				} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class Dt_EscalaCalificacion {
 			boolean guardado = false;
 			
 			try{
-				c = poolConexion.getConnection();
+				c = PoolConexion.getConnection();
 				this.llena_rsEscalaCalificacion(c);
 				this.rsEscalaCal.moveToInsertRow();
 				rsEscalaCal.updateString("calificacion", ec.getCalificacion());
@@ -94,7 +94,7 @@ public class Dt_EscalaCalificacion {
 						rsEscalaCal.close();
 					}
 					if(c != null){
-						poolConexion.closeConnection(c);
+						PoolConexion.closeConnection(c);
 					}
 					
 				} catch (SQLException e) {

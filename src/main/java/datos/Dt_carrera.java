@@ -11,7 +11,7 @@ import entidades.Vw_Carrera;
 
 public class Dt_carrera {
 
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsCarrera = null;
 	private ResultSet rs = null;
@@ -32,7 +32,7 @@ public class Dt_carrera {
 	public ArrayList<Carrera> listaCarActivos(){
 		ArrayList<Carrera> listCar = new ArrayList<Carrera>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_carrera WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -57,7 +57,7 @@ public class Dt_carrera {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -71,7 +71,7 @@ public class Dt_carrera {
 	public ArrayList<Vw_Carrera> listaCarActivos2(){
 		ArrayList<Vw_Carrera> listCar2 = new ArrayList<Vw_Carrera>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_carrera WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -97,7 +97,7 @@ public class Dt_carrera {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -113,7 +113,7 @@ public class Dt_carrera {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsCarrera(c);
 			this.rsCarrera.moveToInsertRow();
 			rsCarrera.updateString("nombre_carrera", ca.getNombre_carrera());
@@ -133,7 +133,7 @@ public class Dt_carrera {
 					rsCarrera.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

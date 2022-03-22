@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import entidades.Oferta;
 
 public class Dt_Oferta {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsOferta = null;
 	private ResultSet rs = null;
@@ -30,7 +30,7 @@ public class Dt_Oferta {
 	public ArrayList<Oferta> listaOfActivos(){
 		ArrayList<Oferta> listFac = new ArrayList<Oferta>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.oferta WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -58,7 +58,7 @@ public class Dt_Oferta {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class Dt_Oferta {
 	public Oferta getoferta(int id){
 		Oferta of = new Oferta(); //instanciamos a rol
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT *  from gc_mcgofe.oferta where id_oferta = "+id, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			rs.next();
@@ -102,7 +102,7 @@ public class Dt_Oferta {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -117,7 +117,7 @@ public class Dt_Oferta {
 	public int getid_oferta(){
 		int x = 0;
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT id_oferta from gc_mcgofe.oferta where estado != 3 Order by id_oferta DESC Limit 1", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			rs.next();
@@ -138,7 +138,7 @@ public class Dt_Oferta {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -155,7 +155,7 @@ public class Dt_Oferta {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsFacultad(c);
 			this.rsOferta.moveToInsertRow();
 			rsOferta.updateString("nombre", fc.getNombre());
@@ -178,7 +178,7 @@ public class Dt_Oferta {
 					rsOferta.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

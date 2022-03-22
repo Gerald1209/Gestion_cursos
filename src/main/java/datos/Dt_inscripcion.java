@@ -15,7 +15,7 @@ import entidades.Vw_Inscripcion;
 
 public class Dt_inscripcion {
 
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsInscripcion = null;
 	private ResultSet rs = null;
@@ -36,7 +36,7 @@ public class Dt_inscripcion {
 	public ArrayList<Inscripcion> listaInActivos(){
 		ArrayList<Inscripcion> listIn = new ArrayList<Inscripcion>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.inscripcion WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -66,7 +66,7 @@ public class Dt_inscripcion {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class Dt_inscripcion {
 	public ArrayList<Vw_Inscripcion> listaInActivos2(){
 		ArrayList<Vw_Inscripcion> listIn2 = new ArrayList<Vw_Inscripcion>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_inscripcion;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -122,7 +122,7 @@ public class Dt_inscripcion {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -138,7 +138,7 @@ public class Dt_inscripcion {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsInscripcion(c);
 			this.rsInscripcion.moveToInsertRow();
 			rsInscripcion.updateInt("id_inscripcion", ca.getId_inscripcion());
@@ -164,7 +164,7 @@ public class Dt_inscripcion {
 					rsInscripcion.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

@@ -11,7 +11,7 @@ import entidades.Rol;
 import entidades.OpcionRol;
 
 public class Dt_OpcionRol {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsOpcionRol = null;
 	private ResultSet rs = null;
@@ -34,7 +34,7 @@ public class Dt_OpcionRol {
 		public ArrayList<OpcionRol> listaOpcRolActivos(){
 			ArrayList<OpcionRol> listOpcRol = new ArrayList<OpcionRol>();
 			try{
-				c = poolConexion.getConnection(); //obtenemos una conexion del pool
+				c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 				ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_opcionrol", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				rs = ps.executeQuery();
 				while(rs.next()){
@@ -61,7 +61,7 @@ public class Dt_OpcionRol {
 						ps.close();
 					}
 					if(c != null){
-						poolConexion.closeConnection(c);
+						PoolConexion.closeConnection(c);
 					}
 					
 				} catch (SQLException e) {
@@ -78,7 +78,7 @@ public class Dt_OpcionRol {
 			boolean guardado = false;
 			
 			try{
-				c = poolConexion.getConnection();
+				c = PoolConexion.getConnection();
 				this.llena_rsOpcionRol(c);
 				this.rsOpcionRol.moveToInsertRow();
 				
@@ -99,7 +99,7 @@ public class Dt_OpcionRol {
 						rsOpcionRol.close();
 					}
 					if(c != null){
-						poolConexion.closeConnection(c);
+						PoolConexion.closeConnection(c);
 					}
 					
 				} catch (SQLException e) {

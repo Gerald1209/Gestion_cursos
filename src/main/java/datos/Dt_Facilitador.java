@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import entidades.Facilitador;
 
 public class Dt_Facilitador {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsFacilitador = null;
 	private ResultSet rs = null;
@@ -30,7 +30,7 @@ public class Dt_Facilitador {
 	public ArrayList<Facilitador> listaFaciActivos(){
 		ArrayList<Facilitador> listFaci = new ArrayList<Facilitador>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.Facilitador;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -58,7 +58,7 @@ public class Dt_Facilitador {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -74,7 +74,7 @@ public class Dt_Facilitador {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llenar_rsFacilitador(c);
 			this.rsFacilitador.moveToInsertRow();
 			rsFacilitador.updateString("email", Faci.getEmail());
@@ -97,7 +97,7 @@ public class Dt_Facilitador {
 					rsFacilitador.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

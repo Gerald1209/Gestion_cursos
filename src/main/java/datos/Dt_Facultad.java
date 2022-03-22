@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import entidades.Facultad;
 
 public class Dt_Facultad {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsFacultad = null;
 	private ResultSet rs = null;
@@ -29,7 +29,7 @@ public class Dt_Facultad {
 	public ArrayList<Facultad> listaFacActivos(){
 		ArrayList<Facultad> listFac = new ArrayList<Facultad>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.facultad WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -53,7 +53,7 @@ public class Dt_Facultad {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -69,7 +69,7 @@ public class Dt_Facultad {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsFacultad(c);
 			this.rsFacultad.moveToInsertRow();
 			rsFacultad.updateString("nombre_facultad", fc.getNombre_facultad());
@@ -88,7 +88,7 @@ public class Dt_Facultad {
 					rsFacultad.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

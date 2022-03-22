@@ -16,7 +16,7 @@ import entidades.Usuario;
 
 public class Dt_usuario {
 	
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsUsuario = null;
 	private ResultSet rs = null;
@@ -37,7 +37,7 @@ public class Dt_usuario {
 	public ArrayList<Usuario> listaUs_id(){
 		ArrayList<Usuario> listUs = new ArrayList<Usuario>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_usuario_departamento_facultad", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -74,7 +74,7 @@ public class Dt_usuario {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -90,7 +90,7 @@ public class Dt_usuario {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llena_rsUsuario_Det(c);
 			this.rsUsuario.moveToInsertRow();
 			
@@ -121,7 +121,7 @@ public class Dt_usuario {
 					rsUsuario.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

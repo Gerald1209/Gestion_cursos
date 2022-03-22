@@ -10,7 +10,7 @@ import entidades.Facultad;
 import entidades.Modalidad;
 
 public class Dt_Modalidad {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsModalidad = null;
 	private ResultSet rs = null;
@@ -31,7 +31,7 @@ public class Dt_Modalidad {
 	public ArrayList<Modalidad> listaModActivos(){
 		ArrayList<Modalidad> listMod = new ArrayList<Modalidad>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.modalidad WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -57,7 +57,7 @@ public class Dt_Modalidad {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class Dt_Modalidad {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llenar_rsModalidad(c);
 			this.rsModalidad.moveToInsertRow();
 			rsModalidad.updateString("nombre_modalidad", Mod.getNombre_modalidad());
@@ -94,7 +94,7 @@ public class Dt_Modalidad {
 					rsModalidad.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

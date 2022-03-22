@@ -10,7 +10,7 @@ import entidades.Vw_Inscripcion;
 
 public class Dt_Evaluar {
 
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsCarrera = null;
 	private ResultSet rs = null;
@@ -31,7 +31,7 @@ public class Dt_Evaluar {
 	public ArrayList<Vw_Inscripcion> listaInscripNul(){
 		ArrayList<Vw_Inscripcion> listCar = new ArrayList<Vw_Inscripcion>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.vw_inscripcion where id_escala is null;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -62,7 +62,7 @@ public class Dt_Evaluar {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 
 			} catch (SQLException e) {

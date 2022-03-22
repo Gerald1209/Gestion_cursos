@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import entidades.Rol;
 
 public class Dt_Rol {
-	poolConexion pc = poolConexion.getInstance(); 
+	PoolConexion pc = PoolConexion.getInstance(); 
 	Connection c = null;
 	private ResultSet rsRol = null;
 	private ResultSet rs = null;
@@ -29,7 +29,7 @@ public class Dt_Rol {
 	public ArrayList<Rol> listaRolActivos(){
 		ArrayList<Rol> listRol = new ArrayList<Rol>();
 		try{
-			c = poolConexion.getConnection(); //obtenemos una conexion del pool
+			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
 			ps = c.prepareStatement("SELECT * FROM gc_mcgofe.Rol;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
@@ -56,7 +56,7 @@ public class Dt_Rol {
 					ps.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class Dt_Rol {
 		boolean guardado = false;
 		
 		try{
-			c = poolConexion.getConnection();
+			c = PoolConexion.getConnection();
 			this.llenar_rsRol(c);
 			this.rsRol.moveToInsertRow();
 			rsRol.updateString("nombre_Rol", Rol.getNombre_rol());
@@ -94,7 +94,7 @@ public class Dt_Rol {
 					rsRol.close();
 				}
 				if(c != null){
-					poolConexion.closeConnection(c);
+					PoolConexion.closeConnection(c);
 				}
 				
 			} catch (SQLException e) {

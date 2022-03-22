@@ -161,7 +161,7 @@
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3> Gestion de Modalidad </h3>
+							<h3> Gestion de Tipos de Capacitacion </h3>
 						</div>
 
 						<div class="title_right">
@@ -181,7 +181,7 @@
 					<div class="col-md-12 col-sm-12 ">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2> Modalidades Registradas </h2>
+								<h2> Tipos de Capacitaciones Registradas </h2>
 								
 								<div class="clearfix"></div>
 							</div>
@@ -191,7 +191,7 @@
 										<div class="card-box table-responsive">
 											<div class="text-muted font-13 col-md-12"
 												style="text-align: right;">
-												<a href="frm_addModalidad.jsp"> <i class="fa fa-2x fa-plus-square" title="Nuevo Usuario"></i></a>
+												<a href="frm_addModalidad.jsp"> <i class="fa fa-2x fa-plus-square" title="Nuevo Tipo de Capacitación"></i></a>
 												<br></br>
 											</div>
 										

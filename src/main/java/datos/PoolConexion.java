@@ -17,7 +17,8 @@ public class PoolConexion
 	//DATOS DE LA CONEXION REMOTA
 	private static String url = "jdbc:mysql://localhost:3306/gc_mcgofe?autoReconnect=true&useSSL=false&serverTimezone=UTC";
 	private static String user = "root";
-	private static String pass="Catherine123";
+	//private static String pass="My$qlS3rv3rAPS*";
+	private static String pass="1234";
 
     //Constructor
 	private PoolConexion(){

@@ -200,11 +200,10 @@
 												style="width: 100%">
 												
 												<%
-											
-												ArrayList<Modalidad > listaMod = new ArrayList<Modalidad>();
-												Dt_Modalidad dtu = new Dt_Modalidad ();
-												listaMod = dtu.listaModActivos();
-												%>
+																								ArrayList<Tipo_Capacitacion > listaMod = new ArrayList<Tipo_Capacitacion>();
+																																																								Dt_Tipo_Capacitacion dtu = new Dt_Tipo_Capacitacion ();
+																																																								listaMod = dtu.listaModActivos();
+																								%>
 												<thead>
 													<tr>
 														
@@ -220,21 +219,20 @@
 
 												<tbody>
 													<%
-													
-													for (Modalidad tMod : listaMod) {
-														String estado = "";
-														String certificado="";
-														if (tMod.getEstado() != 3) {
-															estado = "Activa";
-														} else {
-															estado = "Modificada";
-														}
+													for (Tipo_Capacitacion tMod : listaMod) {
+																									String estado = "";
+																									String certificado="";
+																									if (tMod.getEstado() != 3) {
+																										estado = "Activa";
+																									} else {
+																										estado = "Modificada";
+																									}
 
-														if(tMod.getCertificada() ==0){
-															certificado = "No se certifica";
-														}else{
-															certificado = "Es certificada";
-														}
+																									if(tMod.getCertificada() ==0){
+																										certificado = "No se certifica";
+																									}else{
+																										certificado = "Es certificada";
+																									}
 													%>
 													<tr>
 													

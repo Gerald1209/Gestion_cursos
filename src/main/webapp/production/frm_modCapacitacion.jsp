@@ -168,16 +168,18 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Modalidad <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                            	<% 
-													ArrayList<Modalidad> listaCap = new ArrayList<Modalidad>();
-													Dt_Modalidad dtu = new Dt_Modalidad();
-													listaCap = dtu.listaModActivos();
-												%>
+                                            	<%
+                                            	ArrayList<Tipo_Capacitacion> listaCap = new ArrayList<Tipo_Capacitacion>();
+                                            	                                            												Dt_Tipo_Capacitacion dtu = new Dt_Tipo_Capacitacion();
+                                            	                                            												listaCap = dtu.listaModActivos();
+                                            	%>
 													
                                             	<select id="modalidad" name="modalidad" class="form-control js-example-basic-single" >
 													<option value="">...Seleccione</option>
 													
-													<% for(Modalidad vc: listaCap){ %>
+													<%
+																										for(Tipo_Capacitacion vc: listaCap){
+																										%>
 														
 													<option value="<%=vc.getId_modalidad()%>"><%=vc.getNombre_modalidad() %></option>
 													<%} %>

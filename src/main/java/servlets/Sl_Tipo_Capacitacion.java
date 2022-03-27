@@ -49,8 +49,8 @@ public class Sl_Tipo_Capacitacion extends HttpServlet{
 		TipCap.setTipo_capacitacion(request.getParameter("tipo_capacitacion"));
 		 int certif = Integer.parseInt(request.getParameter("certificada"));
 		TipCap.setCertificada(certif);
-		
 		TipCap.setDescripcion(request.getParameter("descripcion"));
+		TipCap.setEstado(1);
 		
 		
 		////////////////////////////////////////////////////////////////////

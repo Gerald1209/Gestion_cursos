@@ -88,6 +88,7 @@
 								<li><a><i class="fa fa-book"></i>Oferta <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
+										<li><a href="tbl_tipo_capacitacion.jsp">Tipo de Capacitación</a></li>
 										<li><a href="tbl_modalidad.jsp">Modalidad</a></li>
 										<li><a href="tbl_capacitacion.jsp">Capacitacion</a></li>
 										<li><a href="tbl_facilitador.jsp">Facilitador</a></li>

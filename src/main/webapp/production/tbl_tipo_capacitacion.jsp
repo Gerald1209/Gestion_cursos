@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>DataTables | Gentelella</title>
+<title>Gestion de Cursos | Tipo de Capacitación</title>
 
 <!-- Bootstrap -->
 <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -95,6 +95,7 @@
 								<li><a><i class="fa fa-book"></i>Oferta <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
+										<li><a href="tbl_tipo_capacitacion.jsp">Tipo de Capacitación</a></li>
 										<li><a href="tbl_modalidad.jsp">Modalidad</a></li>
 										<li><a href="tbl_capacitacion.jsp">Capacitacion</a></li>
 										<li><a href="tbl_facilitador.jsp">Facilitador</a></li>
@@ -200,10 +201,10 @@
 												style="width: 100%">
 												
 												<%
-																								ArrayList<Tipo_Capacitacion > listaMod = new ArrayList<Tipo_Capacitacion>();
-																																																								Dt_Tipo_Capacitacion dtu = new Dt_Tipo_Capacitacion ();
-																																																								listaMod = dtu.listaModActivos();
-																								%>
+												ArrayList<Tipo_Capacitacion > listaMod = new ArrayList<Tipo_Capacitacion>();
+												Dt_Tipo_Capacitacion dtu = new Dt_Tipo_Capacitacion ();
+												listaMod = dtu.listaModActivos();
+												%>
 												<thead>
 													<tr>
 														

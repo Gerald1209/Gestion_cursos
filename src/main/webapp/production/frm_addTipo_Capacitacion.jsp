@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.*;" %>
+    pageEncoding="ISO-8859-1" import="entidades.*, datos.*, java.util.*;" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gestion de Cursos| Modalidad </title>
+    <title>Gestion de Cursos| Tipo de Capacitación </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,17 +37,6 @@
 
                     <div class="clearfix"></div>
 
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>John Doe</h2>
-                        </div>
-                    </div>
-                    <!-- /menu profile quick info -->
 
                     <br />
 
@@ -79,6 +68,7 @@
 								<li><a><i class="fa fa-book"></i>Oferta <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
+										<li><a href="tbl_tipo_capacitacion.jsp">Tipo de Capacitación</a></li>
 										<li><a href="tbl_modalidad.jsp">Modalidad</a></li>
 										<li><a href="tbl_capacitacion.jsp">Capacitacion</a></li>
 										<li><a href="tbl_facilitador.jsp">Facilitador</a></li>
@@ -145,7 +135,7 @@
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Agregar nueva Modalidad</h3>
+                            <h3>Tipo de Capacitación</h3>
                         </div>
 
                         <div class="title_right">
@@ -158,12 +148,12 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Ingrese una nueva Modalidad </h2>
+                                    <h2>Ingrese un nuevo tipo de capacitación </h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="" action="../Sl_Modalidad" method="post" novalidate>
+                                    <form class="" action="../Sl_Tipo_Capacitacion" method="post" novalidate>
                                     <input type="hidden" value="1" name="opcion" id="opcion"/>
 <!--                                         <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a> -->
 <!--                                         </p> -->
@@ -172,27 +162,13 @@
 
 
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Nombre de Modalidad: <span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Nombre del Tipo de Capacitación: <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                            	<input class="form-control" name="name" placeholder="..." required="required" />
-										
-                                            
-                                        </div>
-                                        </div>
-                                          <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Descripcion <span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                            	<input class="form-control" name="descripcion" placeholder="..." required="required" />
-										
-                                            
-                                        </div>
+                                            	<input class="form-control" name="tipo_capacitacion" id="tipo_capacitacion"  placeholder="..." required="required" />
+	                                        </div>
                                         </div>
                                         
                                         
-                                        
-                       
-                                            	
-										
                                         <div class="field item form-group">
 											<label class="col-form-label col-md-3 col-sm-3  label-align">Certificacion: <span class="required">*</span>
 											</label>
@@ -206,12 +182,19 @@
 										</div>
                                         
                                         
+                                          <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Descripcion: <span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                            	<input class="form-control" name="descripcion" id="descripcion" placeholder="..." required="required" />
+                                        	</div>
+                                          </div>
+                                        
                                         
                                         <div class="ln_solid">
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">
-                                                    <button type='submit' class="btn btn-primary">Guardar</button>
-                                                    <a href="tbl_modalidad.jsp" class="btn btn-success">Regresar</a>
+                                                    <a href="tbl_tipo_capacitacion.jsp" target="blank" class="btn btn-primary">Guardar</a>
+                                                    <a href="tbl_tipo_capacitacion.jsp" class="btn btn-success">Regresar</a>
                                                 </div>
                                             </div>
                                         </div>

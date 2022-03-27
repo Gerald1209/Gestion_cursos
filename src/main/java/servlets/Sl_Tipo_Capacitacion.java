@@ -60,12 +60,12 @@ public class Sl_Tipo_Capacitacion extends HttpServlet{
 			try {
 				
 				if(dttc.addTipoCapacitacion(TipCap)) {
-					response.sendRedirect("production/tbl_TipCapalidad.jsp?msj=1");
+					response.sendRedirect("production/tbl_tipo_capacitacion.jsp?msj=1");
 				}else {
-					response.sendRedirect("production/tbl_TipCapalidad.jsp?msj=2");
+					response.sendRedirect("production/tbl_tipo_capacitacion.jsp?msj=2");
 				}
 			}catch(Exception e) {
-				System.out.println("Error Sl_gestionUserRol opc1: "+e.getMessage());
+				System.out.println("Error Sl_Sl_Tipo_Capacitacion opc1: "+e.getMessage());
 				e.printStackTrace();
 			}
 			break;

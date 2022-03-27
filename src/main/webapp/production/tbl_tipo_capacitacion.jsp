@@ -192,7 +192,7 @@
 										<div class="card-box table-responsive">
 											<div class="text-muted font-13 col-md-12"
 												style="text-align: right;">
-												<a href="frm_addModalidad.jsp"> <i class="fa fa-2x fa-plus-square" title="Nuevo Tipo de CapacitaciÃ³n"></i></a>
+												<a href="frm_addTipo_Capacitacion.jsp"> <i class="fa fa-2x fa-plus-square" title="Nuevo Tipo de Capacitación"></i></a>
 												<br></br>
 											</div>
 										
@@ -201,16 +201,15 @@
 												style="width: 100%">
 												
 												<%
-												ArrayList<Tipo_Capacitacion > listaMod = new ArrayList<Tipo_Capacitacion>();
-												Dt_Tipo_Capacitacion dtu = new Dt_Tipo_Capacitacion ();
-												listaMod = dtu.listaModActivos();
+												ArrayList<Tipo_Capacitacion> listaTipCap = new ArrayList<Tipo_Capacitacion>();
+												Dt_Tipo_Capacitacion dttipcap = new Dt_Tipo_Capacitacion ();
+												listaTipCap = dttipcap.listaTipCapActivos();
 												%>
 												<thead>
 													<tr>
-														
-															<th>Id </th>
-														<th>Nombre </th>
-														<th>Estilo</th>
+														<th>Id </th>
+														<th>Tipo Capacitación </th>
+														<th>Certificada</th>
 														<th>Descripcion</th>
 														<th>Estado</th>
 													    <th>Acciones</th>
@@ -220,36 +219,34 @@
 
 												<tbody>
 													<%
-													for (Tipo_Capacitacion tMod : listaMod) {
-																									String estado = "";
-																									String certificado="";
-																									if (tMod.getEstado() != 3) {
-																										estado = "Activa";
-																									} else {
-																										estado = "Modificada";
-																									}
-
-																									if(tMod.getCertificada() ==0){
-																										certificado = "No se certifica";
-																									}else{
-																										certificado = "Es certificada";
-																									}
+													for (Tipo_Capacitacion tTipCal : listaTipCap) {
+													String estado = "";
+													String certificado="";
+													if (tTipCal.getEstado() != 3) {
+													estado = "Activa";
+													} else {
+													estado = "Modificada";
+													}
+													if(tTipCal.getCertificada() ==0){
+													certificado = "No se certifica";
+													}else{
+													certificado = "Es certificada";
+													}
 													%>
+													
+													
 													<tr>
 													
-													  <td><%=tMod.getId_modalidad()%></td>
-													  <td><%=tMod.getNombre_modalidad()%></td>
+													  <td><%=tTipCal.getId_tipo_capacitacion()%></td>
+													  <td><%=tTipCal.getTipo_capacitacion()%></td>
 													  <td><%=certificado%></td>
-													  <td><%= tMod.getDescripcion() %></td>
+													  <td><%= tTipCal.getDescripcion() %></td>
 													  <td><%=estado %></td>
 														
-											
-														
-														
 														<td>
-															<a href="" target="blank"><i class="fa fa-2x fa-edit" title="Modificar Usuario"></i></a> 
-															<a href="" target="blank"><i class="fa fa-eye fa-2x" title="Visualizar Usuario"></i></a> 
-															<a href="" target="blank"><i class="fa fa-2x fa-trash" title="Eliminar Usuario"></i></a>
+															<a href="" target="blank"><i class="fa fa-2x fa-edit" title="Modificar Tipo de Capacitación"></i></a> 
+															<a href="" target="blank"><i class="fa fa-eye fa-2x" title="Visualizar Tipo de Capacitación"></i></a> 
+															<a href="" target="blank"><i class="fa fa-2x fa-trash" title="Eliminar Tipo de Capacitación"></i></a>
 														</td>
 													</tr>
 													<%
@@ -259,11 +256,12 @@
 
 												<tfoot>
 													<tr>
-													     <th>Id </th>
-														<th>Nombre</th>
-														<th>Estilo</th>
+													    <th>Id </th>
+														<th>Tipo Capacitación </th>
+														<th>Certificada</th>
 														<th>Descripcion</th>
-														<th>Acciones</th>
+														<th>Estado</th>
+													    <th>Acciones</th>
 													</tr>
 												</tfoot>
 											</table>

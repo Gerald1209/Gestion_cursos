@@ -18,7 +18,7 @@ public class Dt_Tipo_Capacitacion {
 	
 	public void llenar_rsTipoCapacitacion(Connection c){
 		try{
-			ps = c.prepareStatement("SELECT * FROM gestio_docente.tipo_capacitacion;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
+			ps = c.prepareStatement("SELECT * FROM gestion_docente.tipo_capacitacion;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
 			rsTipoCapacitacion = ps.executeQuery();
 		}
 		catch (Exception e){
@@ -27,12 +27,12 @@ public class Dt_Tipo_Capacitacion {
 		}
 	}
 	
-	//Metodo para visualizar tipcapalidades registrados y activos
+	//Metodo para visualizar tipo capacitacion registrados y activos
 	public ArrayList<Tipo_Capacitacion> listaTipCapActivos(){
 		ArrayList<Tipo_Capacitacion> listTipCap = new ArrayList<Tipo_Capacitacion>();
 		try{
 			c = PoolConexion.getConnection(); //obtenemos una PoolConexion del pool
-			ps = c.prepareStatement("SELECT * FROM gestio_docente.tipo_capacitacion WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ps = c.prepareStatement("SELECT * FROM gestion_docente.tipo_capacitacion WHERE estado<>3;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				Tipo_Capacitacion tipcap = new Tipo_Capacitacion (); //instanciamos a tipo capacitación
@@ -45,7 +45,7 @@ public class Dt_Tipo_Capacitacion {
 			}
 		}
 		catch (Exception e){
-			System.out.println("DATOS: ERROR EN LISTAR tipcapalidades: "+ e.getMessage());
+			System.out.println("DATOS: ERROR EN LISTAR TIPO CAPACITACION: "+ e.getMessage());
 			e.printStackTrace();
 		}
 		finally{

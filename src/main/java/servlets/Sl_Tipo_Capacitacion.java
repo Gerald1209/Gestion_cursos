@@ -65,7 +65,7 @@ public class Sl_Tipo_Capacitacion extends HttpServlet{
 					response.sendRedirect("production/tbl_tipo_capacitacion.jsp?msj=2");
 				}
 			}catch(Exception e) {
-				System.out.println("Error Sl_Sl_Tipo_Capacitacion opc1: "+e.getMessage());
+				System.out.println("Error Sl_Tipo_Capacitacion opc1: "+e.getMessage());
 				e.printStackTrace();
 			}
 			break;
@@ -80,17 +80,4 @@ public class Sl_Tipo_Capacitacion extends HttpServlet{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

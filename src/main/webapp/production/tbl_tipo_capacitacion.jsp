@@ -1,14 +1,13 @@
-<%@page import="entidades.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="entidades.*, datos.*, java.util.*;"%>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Meta, title, CSS, favicons, etc. -->
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -168,9 +167,7 @@
 						<div class="title_right">
 							<div
 								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-								<div class="input-group">
-									
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -202,7 +199,7 @@
 												
 												<%
 												ArrayList<Tipo_Capacitacion> listaTipCap = new ArrayList<Tipo_Capacitacion>();
-												Dt_Tipo_Capacitacion dttipcap = new Dt_Tipo_Capacitacion ();
+												Dt_Tipo_Capacitacion dttipcap = new Dt_Tipo_Capacitacion();
 												listaTipCap = dttipcap.listaTipCapActivos();
 												%>
 												<thead>
@@ -237,9 +234,9 @@
 													
 													<tr>
 													
-													  <td><%=tTipCal.getId_tipo_capacitacion()%></td>
-													  <td><%=tTipCal.getTipo_capacitacion()%></td>
-													  <td><%=certificado%></td>
+													  <td><%=tTipCal.getId_tipo_capacitacion() %></td>
+													  <td><%=tTipCal.getTipo_capacitacion() %></td>
+													  <td><%=certificado %></td>
 													  <td><%= tTipCal.getDescripcion() %></td>
 													  <td><%=estado %></td>
 														

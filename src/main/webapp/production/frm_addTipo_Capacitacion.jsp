@@ -139,7 +139,8 @@
                         </div>
 
                         <div class="title_right">
-                            
+                            <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                            </div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -193,8 +194,8 @@
                                         <div class="ln_solid">
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">
-                                                    <a href="tbl_tipo_capacitacion.jsp" target="blank" class="btn btn-primary">Guardar</a>
-                                                    <a href="tbl_tipo_capacitacion.jsp" class="btn btn-success">Regresar</a>
+                                                    <button type='submit' class="btn btn-primary">Guardar</button>
+                                                    <a href="tbl_RolOpciones.jsp" class="btn btn-success">Regresar</a>
                                                 </div>
                                             </div>
                                         </div>
